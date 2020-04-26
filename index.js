@@ -56,17 +56,17 @@ function questions() {
     ])
     .then(userInputData => {
       console.log(userInputData);
+      fs.writeFileSync("readme.txt", JSON.stringify({ userInputData }));
     })
     .catch(console.error());
 }
 
-function createReadMe() {
-  questions().then() => {
-    writeFile()
-  }
-}
-function writeFile(userInputData) {
-  fs.writeFileSync("ReadMe.txt", json.stringify(userInputData));
-}
+//   function writeFile(userInputData) {
+//     fs.writeFileSync("ReadMe.txt", json.stringify(userInputData));
+//   }
+// function createReadMe() {
+//   questions().then(await.writeFile())
+// }
 
-createReadMe();
+//
+questions();
