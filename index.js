@@ -56,7 +56,8 @@ function questions() {
     ])
     .then(userInputData => {
       console.log(userInputData);
-      fs.writeFileSync("readme.txt", JSON.stringify({ userInputData }));
+      var text = JSON.stringify(userInputData, null, 10);
+      fs.writeFileSync("readme.txt", text);
     })
     .catch(console.error());
 }
