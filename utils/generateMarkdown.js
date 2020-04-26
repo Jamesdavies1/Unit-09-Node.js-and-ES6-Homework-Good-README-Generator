@@ -1,5 +1,7 @@
 function generateMarkdown(userInputData) {
   return `
+# https://github.com/${userInputData.githubuser}
+
 # ${userInputData.title}
 
 # ${userInputData.description}
@@ -18,6 +20,7 @@ function generateMarkdown(userInputData) {
 
 # ${userInputData.questions}
 
+# ${userInputData.email}
 `;
 }
 

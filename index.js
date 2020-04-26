@@ -2,76 +2,76 @@ const inquirer = require("inquirer");
 const generateMarkdown = require("./utils/generateMarkdown");
 const path = require("path");
 const fs = require("fs");
-// const OUTPUT_DIR = path.resolve(__dirname, "output");
-// const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 function questions() {
   inquirer
     .prompt([
       {
         type: "input",
+        name: "githubuser",
+        message:
+          "Firstly, what is your github username? - This is case sensetive."
+      },
+      {
+        type: "input",
+        name: "email",
+        message: "Thank you. Now provide your email address."
+      },
+      {
+        type: "input",
         name: "title",
-        message: "Please begin by adding project title"
+        message: "Please add project project title."
       },
       {
         type: "input",
         name: "description",
-        message: "Now include a brief project description"
+        message: "Now include a brief project description."
       },
       {
         type: "input",
         name: "contents",
-        message: "Add a table of contents"
+        message: "Add a table of contents."
       },
       {
         type: "input",
         name: "installation",
-        message: "Describe the installation process"
+        message: "Describe the installation process. Eg: npm i"
       },
       {
         type: "input",
         name: "usage",
-        message: "Add the usage for your project"
+        message:
+          "Add the usage for your project ie: Who will use it and what for."
       },
       {
         type: "input",
         name: "License",
-        message: "Please include any licenses"
+        message: "Please include any licenses or leave empty if none."
       },
       {
         type: "input",
         name: "contributors",
-        message: "Name your contributors or leave empty if none"
+        message: "Name your contributors or leave empty if none."
       },
       {
         type: "input",
         name: "tests",
-        message: "Please include tests"
+        message: "Please include any tests or leave empty if none."
       },
       {
         type: "input",
         name: "questions",
-        message: "Finally, add any questions"
+        message: "Finally, add any questions..."
       }
     ])
     .then(userInputData => {
-      console.log(userInputData);
-      const returnedText = JSON.stringify(userInputData, null, 10);
-      // fs.writeFileSync("Readme.md", returnedText);
+      console.log("Your readme has been created!");
       fs.writeFileSync(
         path.join(process.cwd(), "readme.md"),
-        generateMarkdown({ returnedText })
+        generateMarkdown(userInputData)
       );
     })
     .catch(console.error());
 }
 
-//   function writeFile(userInputData) {
-//     fs.writeFileSync("ReadMe.txt", json.stringify(userInputData));
-//   }
-// function createReadMe() {
-//   questions().then(await.writeFile())
-// }
-
-//
 questions();
