@@ -56,8 +56,12 @@ function questions() {
     ])
     .then(userInputData => {
       console.log(userInputData);
-      var text = JSON.stringify(userInputData, null, 10);
-      fs.writeFileSync("readme.txt", text);
+      const returnedText = JSON.stringify(userInputData, null, 10);
+      // fs.writeFileSync("Readme.md", returnedText);
+      fs.writeFileSync(
+        path.join(process.cwd(), "readme.md"),
+        generateMarkdown({ returnedText })
+      );
     })
     .catch(console.error());
 }
