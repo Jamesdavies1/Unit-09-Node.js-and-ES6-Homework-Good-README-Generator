@@ -2,8 +2,8 @@ const inquirer = require("inquirer");
 const generateMarkdown = require("./utils/generateMarkdown");
 const path = require("path");
 const fs = require("fs");
-const OUTPUT_DIR = path.resolve(__dirname, "output");
-const outputPath = path.join(OUTPUT_DIR, "team.html");
+// const OUTPUT_DIR = path.resolve(__dirname, "output");
+// const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 function questions() {
   inquirer
@@ -54,17 +54,19 @@ function questions() {
         message: "Finally, add any questions"
       }
     ])
-    .then(({ userInputData }) => {
-      makeNewFile("README.md", generateMarkdown({ ...userInputData }));
-    });
-}
-
-function makeNewFile(fileName, userInputData) {
-  return fs.writeFileSync(path.join(process.cwd(), fileName), userInputData);
+    .then(userInputData => {
+      console.log(userInputData);
+    })
+    .catch(console.error());
 }
 
 function createReadMe() {
-  questions();
+  questions().then() => {
+    writeFile()
+  }
+}
+function writeFile(userInputData) {
+  fs.writeFileSync("ReadMe.txt", json.stringify(userInputData));
 }
 
 createReadMe();
